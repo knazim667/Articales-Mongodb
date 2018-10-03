@@ -14,7 +14,7 @@ $.getJSON("/news", function(data) {
 });
 
 //Whenever click on a div tag
-$(document).on("click", "div", function() {
+$(document).on("click", ".edit", function() {
     // Empty the note from the Note section
     $("#notes").empty();
     // Save the id from the div tag
@@ -33,7 +33,7 @@ $(document).on("click", "div", function() {
         // An input to enter a new title
         $("#notes").append("<input id='titleinput' name='title' >");
         // A textarea to add a new note body
-        $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
+        $("#notes").append("<textarea id='bodyinput' name='body'></textarea><br/>");
         // A button to submit a new note, with the id of the article saved to it
         $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
 
