@@ -10,7 +10,7 @@ var logger = require("morgan");
 var app = express();
 
 // Port 
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 //use morgan for logging request
 app.use(logger("dev"));
@@ -27,7 +27,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
 
 // connect to mongo Db
-mongoose.connect("mongodb://localhost/Articles-mongo", { useNewUrlParser: true });
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/Articles-mongo";
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI);
 
 // Routes
 
